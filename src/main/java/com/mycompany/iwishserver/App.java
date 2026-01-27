@@ -34,20 +34,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        int port = 8081; // Default port
-
-        if (args.length > 0) {
-            try {
-                port = Integer.parseInt(args[0]);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid port. Using default port 8080.");
-            }
-        }
-
-        Server server = new Server(port);
-        server.start();
-
-
         launch();
     }
 

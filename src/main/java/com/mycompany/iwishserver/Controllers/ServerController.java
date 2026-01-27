@@ -1,22 +1,27 @@
 package com.mycompany.iwishserver.Controllers;
 
-import java.io.IOException;
-
-import com.mycompany.iwishserver.App;
-
-import com.mycompany.iwishserver.network.Server;
+import com.mycompany.iwishserver.network.ServerManager;
 import javafx.fxml.FXML;
 
 public class ServerController {
 
+    private final int PORT = 8081;
+
     @FXML
     private void startServer() {
-
-        System.out.println("Server started");
+        if (!ServerManager.isRunning()) {
+            ServerManager.startServer(PORT);
+        } else {
+            System.out.println("Server is already running!");
+        }
     }
 
     @FXML
     private void stopServer() {
-        System.out.println("Server stopped");
+        if (ServerManager.isRunning()) {
+            ServerManager.stopServer();
+        } else {
+            System.out.println("Server is not running!");
+        }
     }
 }
