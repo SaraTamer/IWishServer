@@ -32,6 +32,7 @@ public class ContributionDAO {
             ps.setInt(1, contribution.getContributorId());
             ps.setInt(2, contribution.getGiftId());
             ps.setBigDecimal(3, contribution.getPercentage());
+            System.out.println("Current User ID: " + contribution.getContributorId());
 
             int rows = ps.executeUpdate();
             return rows > 0;
@@ -75,7 +76,7 @@ public class ContributionDAO {
     // Each contribution includes gift ID and percentage contributed
     public List<Contribution> getContributionsByContributorId(int contributorId) {
         List<Contribution> list = new ArrayList<>();
-        String sql = "SELECT * FROM contribution WHERE contributor_id = ?";
+        String sql = "SELECT * FROM contribution WHERE contributor_id = ? order by contribution_id desc";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, contributorId);

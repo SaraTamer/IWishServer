@@ -31,7 +31,8 @@ public class ContributionController extends BaseController {
 
                     int currentUserId =
                             Integer.parseInt(request.getMeta()); // from session / client
-
+                    System.out.println("Current User ID: " + currentUserId);
+                    System.out.println(currentUserId);
                     boolean success =
                             service.addContribution(contribution, currentUserId);
 
@@ -74,6 +75,15 @@ public class ContributionController extends BaseController {
                     );
                 }
 
+                case "GET_BY_GIFT":{
+                    int giftId = Integer.parseInt(request.getBody());
+                    List<Contribution> list = service.getContributionsByGiftId(giftId);
+                    return new Response(
+                            "SUCCESS",
+                            null,
+                            gson.toJson(list)
+                    );
+                }
                 default:
                     return new Response(
                             "ERROR",

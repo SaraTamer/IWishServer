@@ -28,6 +28,7 @@ public class ContributionService {
      * and handles gift completion logic.
      */
     public boolean addContribution(Contribution contribution, int currentUserId) {
+        contribution.setContributorId(currentUserId);
         // 1. Basic validation
         if (contribution.getPercentage() == null ||
                 contribution.getPercentage().compareTo(BigDecimal.ZERO) <= 0 ||
