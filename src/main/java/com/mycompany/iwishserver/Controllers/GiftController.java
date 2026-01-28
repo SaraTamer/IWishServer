@@ -25,6 +25,7 @@ public class GiftController extends BaseController {
                     Gift gift = new Gift();
                     gift.setGiftName(dto.getGiftName());
                     gift.setPrice(dto.getPrice());
+                    gift.setDescription(dto.getDescription());
                     gift.setOwnerUserId(dto.getOwnerUserId());
                     gift.setStatus(dto.getStatus());
 
@@ -62,8 +63,12 @@ public class GiftController extends BaseController {
                     gift.setGiftName(dto.getGiftName());
                     gift.setPrice(dto.getPrice());
                     gift.setStatus(dto.getStatus());
+                    gift.setDescription(dto.getDescription());
                     gift.setOwnerUserId(dto.getOwnerUserId());
 
+                    System.out.println("Server Controller");
+                    System.out.println(dto.getDescription());
+                    
                     boolean success = service.updateGift(gift);
                     return new Response(
                             success ? "SUCCESS" : "ERROR",

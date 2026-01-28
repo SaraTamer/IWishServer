@@ -19,10 +19,12 @@ public class GiftDAO {
 
             ps.setString(1, gift.getGiftName());
             ps.setBigDecimal(2, gift.getPrice());
-            ps.setString(3, gift.getStatus());
+            ps.setString(3, "Incomplete");
             ps.setInt(4, gift.getOwnerUserId());
             ps.setString(5, gift.getDescription());
 
+            System.out.println("DAO");
+            System.out.println(gift.getDescription());
             int rows = ps.executeUpdate();
             return rows > 0;
 

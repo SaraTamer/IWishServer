@@ -34,13 +34,16 @@ public class GiftService {
             return "Invalid user ID";
         }
 
+        System.out.println("Server Service");
+        System.out.println(gift.getDescription());
         // Try to add gift to database
         boolean success = giftDAO.addGift(gift);
 
         if (success) {
             return "SUCCESS";
         } else {
-            return "Failed to add gift. Please try again.";
+            return gift.getGiftName();
+            //return "Failed to add gift. Please try again.";
         }
     }
 

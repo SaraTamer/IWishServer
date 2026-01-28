@@ -8,6 +8,15 @@ public class GiftActionDTO {
     private String giftName;
     private BigDecimal price;
     private String status;
+    private String description;
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 
     public int getGiftId() {
         return giftId;
